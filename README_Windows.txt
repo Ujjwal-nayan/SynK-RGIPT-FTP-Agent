@@ -6,7 +6,7 @@
 Developer:    Anish Kalra (Roll No: 24MC3006)
 Department:   Mathematical Sciences, RGIPT
 Release:      v1.0.0
-Repository:   https://github.com/AnishKalra/SynK-RGIPT-FTP-Agent
+Repository:   https://github.com/Anishk362/SynK-RGIPT-FTP-Agent
 
 --------------------------------------------------------------------------------
 1. CRITICAL: PREVENTING AUTOMATIC DELETION
@@ -76,4 +76,4 @@ A: 1. Open Task Manager (Ctrl+Shift+Esc).
 SUPPORT
 --------------------------------------------------------------------------------
 For updates or help, visit:
-https://github.com/AnishKalra/SynK-RGIPT-FTP-Agent
+https://github.com/Anishk362/SynK-RGIPT-FTP-Agent
