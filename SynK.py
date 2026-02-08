@@ -14,25 +14,37 @@ import multiprocessing
 # -------------------------------------------------------------------------
 
 # DETERMINING THE "REAL" LOCATION
-# When frozen, sys.executable is the EXE/App path.
-# When raw, __file__ is the script path.
 if getattr(sys, 'frozen', False):
     EXE_PATH = sys.executable
     if platform.system() == "Darwin":
         # On Mac, sys.executable points inside the .app bundle (Contents/MacOS/SynK)
         # We want the folder containing the .app
-        APP_DIR = os.path.abspath(os.path.join(os.path.dirname(EXE_PATH), "../../.."))
+        APP_BUNDLE_PATH = os.path.abspath(os.path.join(os.path.dirname(EXE_PATH), "../../.."))
+        
+        # MAC FIX: Use 'Application Support' for config because 'Applications' is Read-Only
+        APP_NAME = "SynK"
+        CONFIG_DIR = os.path.join(os.path.expanduser("~"), "Library", "Application Support", APP_NAME)
+        if not os.path.exists(CONFIG_DIR):
+            try: os.makedirs(CONFIG_DIR)
+            except: pass
+        CONFIG_FILE = os.path.join(CONFIG_DIR, "SynK_config.json")
+        
+        # For Mac, we don't change directory to the App Bundle as we can't write there anyway
+        APP_DIR = APP_BUNDLE_PATH 
     else:
         # On Windows, it's the folder containing the .exe
         APP_DIR = os.path.dirname(sys.executable)
+        # Windows: We write next to the EXE (Since it's in a user folder like Desktop/SynK)
+        try: os.chdir(APP_DIR)
+        except: pass
+        CONFIG_FILE = os.path.join(APP_DIR, "SynK_config.json")
 else:
     EXE_PATH = os.path.abspath(__file__)
     APP_DIR = os.path.dirname(os.path.abspath(__file__))
+    try: os.chdir(APP_DIR)
+    except: pass
+    CONFIG_FILE = os.path.join(APP_DIR, "SynK_config.json")
 
-# Ensure config is saved where the user actually put the app, not in a temp folder
-os.chdir(APP_DIR)
-
-CONFIG_FILE = os.path.join(APP_DIR, "SynK_config.json")
 POLL_INTERVAL = 3600  # 1 Hour
 DEFAULT_HOST = "192.168.3.9" 
 
@@ -274,10 +286,19 @@ def add_to_startup():
 if __name__ == "__main__":
     multiprocessing.freeze_support() 
     
+    # WINDOWS ICON FIX: Explicitly set AppUserModelID
+    if platform.system() == "Windows":
+        try:
+            import ctypes
+            myappid = 'rgipt.synk.ftpagent.1.0' # Arbitrary string
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+        except: pass
+
     # Check for silent flag
     if "--silent" in sys.argv:
         # BACKGROUND MODE
-        try: os.chdir(APP_DIR)
+        try: 
+            if platform.system() == "Windows": os.chdir(APP_DIR)
         except: pass
         
         while True:
@@ -293,11 +314,10 @@ if __name__ == "__main__":
         # Set icon if it exists
         try:
             if platform.system() == "Windows":
-                root.iconbitmap(os.path.join(APP_DIR, "app_icon.ico"))
-            # Linux/Mac often use .png for tk window icons
-            # else: 
-            #    img = tk.PhotoImage(file=os.path.join(APP_DIR, "app_icon.png"))
-            #    root.iconphoto(False, img)
+                # Ensure we look in the APP_DIR for the icon
+                icon_path = os.path.join(APP_DIR, "app_icon.ico")
+                if os.path.exists(icon_path):
+                    root.iconbitmap(icon_path)
         except: pass
         
         app = SetupApp(root)
