@@ -25,6 +25,7 @@ jobs:
           pyinstaller --noconsole --onefile --icon=app_icon.ico --name=SynK SynK.py
           
       - name: Prepare Release Zip
+        shell: cmd
         run: |
           mkdir release_dist
           copy dist\SynK.exe release_dist\
@@ -83,4 +84,4 @@ jobs:
             SynK-Windows/SynK-Windows.zip
             SynK-MacOS/SynK-MacOS.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}git add .github/workflows/build.yml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
