@@ -47,9 +47,13 @@ Once the app opens, you will see the Setup Manager.
 5. Verification:
    - Click the [+ VERIFY & ADD TASK] button.
    - Watch for a "Success" popup.
+   - Your subject will appear in the list below.
 
-6. Activation:
-   - Click the green [SAVE & START SynK] button.
+6. Managing Tasks (NEW):
+   - Made a mistake? Click the Red [X] button next to a subject to remove it.
+
+7. Activation:
+   - Click the [SAVE & START SynK] button docked at the bottom.
 
 --------------------------------------------------------------------------------
 3. PERMISSIONS (Don't miss this!)
@@ -77,6 +81,10 @@ The window will then close. SynK is now running silently in the background.
 Q: How do I add another subject later?
 A: Go to Applications -> Double-click 'SynK'. The setup menu will reappear.
 
+Q: What if a professor renames a folder?
+A: Just open SynK, delete the old task using the Red [X] button, and add the
+   new folder name.
+
 Q: How do I uninstall it completely?
 A: 1. Open Terminal (Command+Space -> Type "Terminal").
    2. Copy/Paste this command: 
@@ -86,5 +94,7 @@ A: 1. Open Terminal (Command+Space -> Type "Terminal").
 --------------------------------------------------------------------------------
 SUPPORT
 --------------------------------------------------------------------------------
+Found a bug? Report it here:
+https://github.com/AnishK362/SynK-RGIPT-FTP-Agent
 Found a bug? Report it here:
 https://github.com/AnishK362/SynK-RGIPT-FTP-Agent

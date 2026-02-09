@@ -51,7 +51,12 @@ The Setup Manager window will appear.
 4. Save to Local Folder: Click [Choose Folder] to pick where files go.
 5. Click [+ VERIFY & ADD TASK].
    - SynK will test the connection. If it works, it adds it to the list.
-6. Click [SAVE & START SynK].
+   
+6. Managing Tasks (NEW):
+   - You will see your subjects in a list.
+   - To remove a subject, simply click the Red [X] button next to it.
+
+7. Click [SAVE & START SynK] at the bottom.
 
 The window will vanish. This is normal! SynK is now running in the background.
 
@@ -62,15 +67,17 @@ Q: I clicked "Save & Start" and nothing happened.
 A: That means it worked. SynK is designed to be invisible. It will start checking
    for files immediately and then every 60 minutes.
 
-Q: I moved 'SynK.exe' to a new folder and it stopped working.
-A: SynK remembers its location for auto-startup. If you move the .exe, you must
-   double-click it again in the new location to repair the link.
+Q: The Taskbar icon is missing or generic.
+A: Ensure the 'app_icon.ico' file is in the same folder as 'SynK.exe'.
+
+Q: What if a professor renames a folder?
+A: Open SynK, click the Red [X] to delete the old task, and add the new one.
 
 Q: How do I stop it/Uninstall?
 A: 1. Open Task Manager (Ctrl+Shift+Esc).
    2. Details Tab -> Right-click 'SynK.exe' -> End Task.
    3. Press Win+R -> Type 'shell:startup' -> Delete 'SynK_Agent.vbs'.
-   4. Delete the SynK folder.
+   4. Delete this SynK folder.
 
 --------------------------------------------------------------------------------
 SUPPORT
