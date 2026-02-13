@@ -44,7 +44,7 @@ unzip SynK-Linux.zip && cd SynK-Linux && ./install.sh
 ```
 
 Supports: Ubuntu 20.04+, Fedora 35+, Debian 11+, Arch Linux  
-*Linux port by Ujjwal Nayan (RGIPT 2024 Batch)*
+*Linux port by Ujjwal Nayan (24EC3041)*
 
 ## 📸 How to Use
 
