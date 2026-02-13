@@ -1,0 +1,14 @@
+[Unit]
+Description=SynK - RGIPT FTP Agent Background Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/share/synk/synk.py --daemon
+Restart=on-failure
+RestartSec=60
+Environment="DISPLAY=:0"
+
+[Install]
+WantedBy=default.target

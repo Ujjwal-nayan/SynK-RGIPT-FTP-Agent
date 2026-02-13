@@ -1,13 +1,14 @@
 <div align="center">
 
 # SynK - RGIPT FTP Agent
+
 ### The "Set it and Forget it" Course Material Sync for RGIPTians
 
 [![Downloads](https://img.shields.io/github/downloads/Anishk362/SynK-RGIPT-FTP-Agent/total?style=for-the-badge&color=2ea44f)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)
-
 [![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/blob/main/README_Windows.txt)
 [![macOS](https://img.shields.io/badge/Platform-macOS-000000?style=flat-square&logo=apple&logoColor=white)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/blob/main/README_Mac.txt)
+[![Linux](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/Ujjwal-nayan/SynK-RGIPT-FTP-Agent)
 [![Status](https://img.shields.io/badge/Status-Stable-success?style=flat-square)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/actions)
 
 </div>
@@ -15,6 +16,7 @@
 ---
 
 ## 📖 About
+
 **SynK** is a background utility designed exclusively for students of **Rajiv Gandhi Institute of Petroleum Technology (RGIPT)**. It automatically connects to the college FTP server and mirrors course materials (slides, assignments, PDFs) to your local laptop.
 
 Once configured, SynK runs silently in the background. You never have to manually check the FTP server again.
@@ -22,16 +24,27 @@ Once configured, SynK runs silently in the background. You never have to manuall
 ## 🚀 Key Features
 
 * **Zero Distraction:** Runs silently in the system tray/background. No open windows.
-* **Intranet Only:** Works strictly on the local RGIPT Wi-Fi (`192.168.x.x`). **It works without a Cyberoam login** and consumes zero internet data.
+* **Intranet Only:** Works strictly on the local RGIPT Wi-Fi (192.168.x.x). **It works without a Cyberoam login** and consumes zero internet data.
 * **Smart Sync:** Checks for changes every 60 minutes. It intelligently detects file updates based on size changes.
-* **Cross-Platform:** Native executable support for **Windows 10/11** and **macOS** (Silicon & Intel).
+* **Cross-Platform:** Native support for **Windows 10/11**, **macOS** (Silicon & Intel), and **Linux** (Ubuntu, Fedora, Debian, Arch).
 * **Auto-Start:** Automatically launches when you reboot your computer.
 
 ## 📥 Download & Install
 
-**[Click here to download the latest version (v1.0.0)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)**
+### Windows & macOS
+**[Download Latest Release (v1.0.0)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)**
 
 *Detailed installation instructions (including how to bypass Windows Defender/macOS Security) are provided on the download page.*
+
+### Linux (GTK 3)
+**[Download Linux Port](https://github.com/Ujjwal-nayan/SynK-RGIPT-FTP-Agent/releases/latest)**
+
+```bash
+unzip SynK-Linux.zip && cd SynK-Linux && ./install.sh
+```
+
+Supports: Ubuntu 20.04+, Fedora 35+, Debian 11+, Arch Linux  
+*Linux port by Ujjwal Nayan (RGIPT 2024 Batch)*
 
 ## 📸 How to Use
 
@@ -46,15 +59,19 @@ To add more subjects later, simply run the application again.
 ---
 
 ## 🛠 Tech Stack
+
 * **Language:** Python 3.12
-* **GUI:** Tkinter (Native UI)
+* **GUI:** Tkinter (Native UI) / GTK 3 (Linux)
 * **Core:** `ftplib`, `multiprocessing`
 * **Automation:** GitHub Actions (CI/CD)
 
 ---
+
 <div align="center">
 
-**Developed by Anish Kalra**
+**Developed by Anish Kalra**  
 *Roll No: 24MC3006 | Dept. of Mathematical Sciences*
+
+**Linux Port:** Ujjwal Nayan (24EC3041)
 
 </div>

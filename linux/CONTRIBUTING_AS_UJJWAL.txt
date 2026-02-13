@@ -1,0 +1,391 @@
+╔═══════════════════════════════════════════════════════════════════╗
+║   Contributing Your Linux Port to Anish's SynK Project           ║
+║                    For: Ujjwal Nayan                              ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+Hey Ujjwal!
+
+This guide will help you contribute your Linux port to Anish Kalra's
+SynK project on GitHub. Since you're contributing to someone else's
+project, the process is slightly different than if you were the owner.
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 1: REACH OUT TO ANISH (RECOMMENDED)
+═══════════════════════════════════════════════════════════════════
+
+Before diving in, it's good practice to let Anish know about your
+contribution. Send him an email:
+
+──────────────────────────────────────────────────────────────────
+To: 24mc3006@rgipt.ac.in
+Subject: Linux Port Contribution for SynK
+
+Hi Anish,
+
+I'm Ujjwal Nayan from your batch. I saw Dr. Kundu's email about SynK
+and thought it would be great to have a Linux version since many of
+us use Linux.
+
+I've developed a complete Linux port with GTK 3 interface, systemd
+integration, and all the features from the Windows/macOS versions.
+
+I'd like to contribute this to your GitHub repository. Would you be
+open to accepting this as a pull request?
+
+The port includes:
+- Native GTK 3 GUI
+- Automated installer
+- systemd auto-start
+- Full documentation
+- Support for Ubuntu, Fedora, Debian, Arch
+
+Let me know if you'd like me to submit a PR!
+
+Best,
+Ujjwal Nayan
+[Your Roll Number]
+──────────────────────────────────────────────────────────────────
+
+This is courteous and establishes collaboration.
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 2: FORK THE REPOSITORY
+═══════════════════════════════════════════════════════════════════
+
+1. Go to: https://github.com/Anishk362/SynK-RGIPT-FTP-Agent
+
+2. Click the "Fork" button (top right)
+
+3. This creates YOUR copy: github.com/YOUR_USERNAME/SynK-RGIPT-FTP-Agent
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 3: CLONE YOUR FORK
+═══════════════════════════════════════════════════════════════════
+
+# Clone YOUR fork (not Anish's original)
+git clone https://github.com/YOUR_USERNAME/SynK-RGIPT-FTP-Agent.git
+cd SynK-RGIPT-FTP-Agent
+
+# Add Anish's repo as 'upstream' (to stay in sync)
+git remote add upstream https://github.com/Anishk362/SynK-RGIPT-FTP-Agent.git
+
+# Verify remotes
+git remote -v
+# Should show:
+# origin    https://github.com/YOUR_USERNAME/... (your fork)
+# upstream  https://github.com/Anishk362/... (original)
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 4: CREATE A FEATURE BRANCH
+═══════════════════════════════════════════════════════════════════
+
+# Make sure you're up to date with Anish's latest code
+git fetch upstream
+git checkout main
+git merge upstream/main
+
+# Create your feature branch
+git checkout -b feature/linux-port
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 5: ADD YOUR LINUX PORT FILES
+═══════════════════════════════════════════════════════════════════
+
+# Create a linux directory
+mkdir -p linux
+
+# Extract your Linux port
+unzip /path/to/SynK-Linux.zip
+mv SynK-Linux/* linux/
+
+# The structure should be:
+# SynK-RGIPT-FTP-Agent/
+# ├── linux/           ← Your contribution
+# │   ├── synk.py
+# │   ├── install.sh
+# │   └── ... (all other files)
+# ├── windows/         ← Anish's Windows version (if exists)
+# ├── macos/           ← Anish's macOS version (if exists)
+# └── README.md        ← Main project README
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 6: UPDATE THE MAIN README (OPTIONAL BUT NICE)
+═══════════════════════════════════════════════════════════════════
+
+If you want to be extra helpful, update the main README.md to mention
+Linux support. Add something like:
+
+## 🐧 Linux Support
+
+SynK now has Linux support thanks to contributions from the community!
+
+**Download:** [Latest Linux Release](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)
+
+**Quick Install:**
+```bash
+unzip SynK-Linux.zip
+cd SynK-Linux
+./install.sh
+```
+
+For detailed Linux documentation, see [linux/README.md](linux/README.md)
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 7: COMMIT YOUR CHANGES
+═══════════════════════════════════════════════════════════════════
+
+# Add all Linux port files
+git add linux/
+
+# If you updated main README:
+git add README.md
+
+# Commit with a clear message
+git commit -m "Add: Complete Linux port with GTK 3 implementation
+
+This contribution adds full Linux support for SynK with:
+- Native GTK 3 graphical interface
+- systemd integration for background sync
+- Auto-start on login support
+- One-command installation script
+- Support for Ubuntu, Fedora, Debian, Arch Linux
+- Comprehensive documentation and tests
+
+The Linux port maintains feature parity with Windows/macOS versions
+while providing native Linux desktop integration.
+
+Contributor: Ujjwal Nayan (RGIPT 2024 Batch)"
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 8: PUSH TO YOUR FORK
+═══════════════════════════════════════════════════════════════════
+
+# Push your branch to YOUR fork
+git push origin feature/linux-port
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 9: CREATE A PULL REQUEST
+═══════════════════════════════════════════════════════════════════
+
+1. Go to YOUR fork: https://github.com/YOUR_USERNAME/SynK-RGIPT-FTP-Agent
+
+2. You'll see a banner: "feature/linux-port had recent pushes"
+   Click "Compare & pull request"
+
+   OR
+
+3. Go to "Pull requests" tab → "New pull request"
+   - Base repository: Anishk362/SynK-RGIPT-FTP-Agent (base: main)
+   - Head repository: YOUR_USERNAME/SynK-RGIPT-FTP-Agent (compare: feature/linux-port)
+
+4. Fill in the PR details:
+
+──────────────────────────────────────────────────────────────────
+Title: Add Complete Linux Port for SynK
+
+Description:
+
+## 👋 Hello!
+
+I'm Ujjwal Nayan from your batch. After seeing Dr. Kundu's email about
+SynK, I thought it would be great to have a Linux version since many
+students use Linux.
+
+## 🎯 What This PR Does
+
+This PR adds a complete Linux port of SynK with:
+
+- ✅ Native GTK 3 GUI matching the Windows/macOS design
+- ✅ systemd service for automatic background sync
+- ✅ Auto-start on login functionality
+- ✅ One-command installation (`./install.sh`)
+- ✅ Support for Ubuntu, Fedora, Debian, Arch Linux
+- ✅ Comprehensive documentation (README.txt, QUICKSTART.txt)
+- ✅ Testing infrastructure
+- ✅ GitHub Actions workflow for automated releases
+
+## 🧪 Testing
+
+I've tested this on:
+- [x] Ubuntu 22.04 LTS
+- [x] Fedora 38
+- [ ] Other distributions (would appreciate testing help!)
+
+## 📝 Files Added
+
+All files are in the `linux/` directory to keep things organized:
+- `synk.py` - Main application
+- `install.sh` - Automated installer
+- `uninstall.sh` - Clean removal
+- `test.sh` - System compatibility checker
+- Documentation and templates
+
+## 🤝 Notes
+
+- This is my first contribution to the project - feedback welcome!
+- The code maintains feature parity with Windows/macOS versions
+- All credit to you for the original concept and design
+- Happy to make any changes you suggest
+
+Let me know if you'd like any modifications!
+
+Thanks,
+Ujjwal
+──────────────────────────────────────────────────────────────────
+
+5. Click "Create pull request"
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 10: WAIT FOR REVIEW
+═══════════════════════════════════════════════════════════════════
+
+Anish (or other maintainers) will review your PR. They might:
+
+✓ Accept it immediately
+✓ Request changes or improvements
+✓ Ask questions about implementation
+✓ Suggest modifications
+
+Be responsive and collaborative! This is a learning opportunity.
+
+═══════════════════════════════════════════════════════════════════
+
+STEP 11: MAKING CHANGES AFTER FEEDBACK
+═══════════════════════════════════════════════════════════════════
+
+If Anish requests changes:
+
+# Make the changes in your local branch
+# Edit files as needed
+
+# Commit the changes
+git add .
+git commit -m "Fix: Address review feedback
+
+- [List the changes you made]
+"
+
+# Push to update the PR
+git push origin feature/linux-port
+
+The PR will automatically update!
+
+═══════════════════════════════════════════════════════════════════
+
+AFTER YOUR PR IS MERGED
+═══════════════════════════════════════════════════════════════════
+
+Congratulations! 🎉 You're now a contributor to SynK!
+
+1. Update your fork:
+   git checkout main
+   git pull upstream main
+   git push origin main
+
+2. Delete your feature branch (optional):
+   git branch -d feature/linux-port
+   git push origin --delete feature/linux-port
+
+3. Share the achievement!
+   - Add to your resume: "Open source contributor"
+   - LinkedIn: "Contributed Linux port to SynK project"
+   - Mention in placement interviews
+
+═══════════════════════════════════════════════════════════════════
+
+ETIQUETTE TIPS FOR CONTRIBUTING
+═══════════════════════════════════════════════════════════════════
+
+✓ Be respectful - it's Anish's project
+✓ Be patient - he may be busy with coursework
+✓ Be humble - accept feedback graciously  
+✓ Give credit - acknowledge his original work
+✓ Be helpful - offer to maintain the Linux version
+✓ Be collaborative - this is a team effort!
+
+═══════════════════════════════════════════════════════════════════
+
+IF ANISH DOESN'T RESPOND
+═══════════════════════════════════════════════════════════════════
+
+If after 1-2 weeks there's no response:
+
+1. Try reaching out again (email or PR comment)
+2. You can mention this to Dr. Kundu
+3. In the meantime, you can:
+   - Create your own fork as a separate project
+   - Share directly with classmates
+   - List it as your own portfolio project
+
+═══════════════════════════════════════════════════════════════════
+
+ALTERNATIVE: CREATE YOUR OWN FORK
+═══════════════════════════════════════════════════════════════════
+
+If Anish doesn't want to merge it, or you want to maintain it
+independently, you can:
+
+1. Keep your fork as: "SynK-Linux" or "SynK-RGIPT-Linux"
+2. Create releases on your own repository
+3. Share with students directly
+4. Give clear credit to Anish in your README
+
+This is perfectly fine in open source!
+
+═══════════════════════════════════════════════════════════════════
+
+QUICK COMMAND SUMMARY
+═══════════════════════════════════════════════════════════════════
+
+# Fork on GitHub first, then:
+
+git clone https://github.com/YOUR_USERNAME/SynK-RGIPT-FTP-Agent.git
+cd SynK-RGIPT-FTP-Agent
+git remote add upstream https://github.com/Anishk362/SynK-RGIPT-FTP-Agent.git
+
+git checkout -b feature/linux-port
+
+# Add your files
+mkdir linux
+unzip SynK-Linux.zip
+mv SynK-Linux/* linux/
+
+git add linux/
+git commit -m "Add: Complete Linux port"
+git push origin feature/linux-port
+
+# Then create PR on GitHub
+
+═══════════════════════════════════════════════════════════════════
+
+QUESTIONS TO FILL IN
+═══════════════════════════════════════════════════════════════════
+
+Before you start, update these in the files:
+
+1. Your roll number: _________________
+2. Your department: _________________  
+3. Your email: _____________________@rgipt.ac.in
+4. Your GitHub username: _________________
+
+═══════════════════════════════════════════════════════════════════
+
+Good luck with your contribution, Ujjwal! This is a great way to:
+- Build your open source portfolio
+- Learn collaborative development
+- Help fellow RGIPT students
+- Make a real impact
+
+You've got this! 💪
+
+═══════════════════════════════════════════════════════════════════
