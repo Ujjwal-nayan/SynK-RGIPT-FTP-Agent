@@ -43,8 +43,7 @@ Once configured, SynK runs silently in the background. You never have to manuall
 unzip SynK-Linux.zip && cd SynK-Linux && ./install.sh
 ```
 
-Supports: Ubuntu 20.04+, Fedora 35+, Debian 11+, Arch Linux  
-*Linux port by Ujjwal Nayan (24EC3041)*
+Supports: Ubuntu 20.04+, Fedora 35+, Debian 11+, Arch Linux 
 
 ## 📸 How to Use
 
@@ -69,9 +68,8 @@ To add more subjects later, simply run the application again.
 
 <div align="center">
 
-**Developed by Anish Kalra**  
-*Roll No: 24MC3006 | Dept. of Mathematical Sciences*
+**Developed by Anish Kalra** *Roll No: 24MC3006 | Dept. of Mathematical Sciences*
 
-**Linux Port:** Ujjwal Nayan (24EC3041)
+**Linux Port by Ujjwal Nayan** *Roll No: 24EC3041 | Dept. of Electrical and Electronics Engineering*
 
 </div>
