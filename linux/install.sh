@@ -2,13 +2,13 @@
 
 # SynK - RGIPT FTP Agent Installer for Linux
 # Original SynK: Anish Kalra (24MC3006)
-# Linux Port: Ujjwal Nayan
+# Linux Port: Ujjwal Nayan (24EC3041)
 
 set -e
 
 echo "╔═══════════════════════════════════════════════════════════╗"
-echo "║       SynK - RGIPT FTP Agent Installation Script         ║"
-echo "║              Linux Port by Anish Kalra                    ║"
+echo "║       SynK - RGIPT FTP Agent Installation Script          ║"
+echo "║              Linux Port by Ujjwal Nayan                   ║"
 echo "╚═══════════════════════════════════════════════════════════╝"
 echo ""
 
@@ -134,5 +134,7 @@ echo ""
 echo "⚡ The background service will start automatically on your next login."
 echo "   To start it now, run: systemctl --user start synk.service"
 echo ""
-echo "❓ For help or issues, contact: Anish Kalra (24MC3006@rgipt.ac.in)"
+echo "For updates or help, visit:"
+echo "  Original SynK: https://github.com/Anishk362/SynK-RGIPT-FTP-Agent"
+echo "  Linux Port:    https://github.com/Ujjwal-nayan/SynK-RGIPT-FTP-Agent"
 echo ""
