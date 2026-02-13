@@ -114,7 +114,7 @@ class FTPSyncEngine:
             return None
     
     def sync_folder(self, task):
-        """Sync a single folder from FTP"""
+        """Sync a single folder from FTP (including subdirectories)"""
         try:
             host = task.get('host', '192.168.3.9')
             port = task.get('port', 21)
@@ -130,41 +130,8 @@ class FTPSyncEngine:
             ftp = FTP()
             ftp.connect(host, port, timeout=30)
             ftp.login(username, password)
-            ftp.cwd(remote_folder)
             
-            # Get list of files
-            files = []
-            ftp.retrlines('NLST', files.append)
-            
-            synced_count = 0
-            for filename in files:
-                try:
-                    local_file = local_folder / filename
-                    temp_file = local_folder / f".{filename}.tmp"
-                    
-                    # Download to temp file first
-                    with open(temp_file, 'wb') as f:
-                        ftp.retrbinary(f'RETR {filename}', f.write)
-                    
-                    # Check if file changed
-                    if local_file.exists():
-                        old_hash = self.get_file_hash(local_file)
-                        new_hash = self.get_file_hash(temp_file)
-                        
-                        if old_hash == new_hash:
-                            # File unchanged, remove temp
-                            temp_file.unlink()
-                            continue
-                    
-                    # Move temp file to actual location
-                    temp_file.replace(local_file)
-                    synced_count += 1
-                    SynKConfig.log(f"Synced: {filename} to {local_folder}")
-                    
-                except Exception as e:
-                    SynKConfig.log(f"Error syncing {filename}: {e}")
-                    if temp_file.exists():
-                        temp_file.unlink()
+            synced_count = self._sync_directory_recursive(ftp, remote_folder, local_folder)
             
             ftp.quit()
             
@@ -176,6 +143,82 @@ class FTPSyncEngine:
         except Exception as e:
             SynKConfig.log(f"Error in sync_folder for {task.get('remote_folder', 'unknown')}: {e}")
             return False
+    
+    def _sync_directory_recursive(self, ftp, remote_path, local_path):
+        """Recursively sync a directory and all its subdirectories"""
+        synced_count = 0
+        
+        try:
+            # Change to the remote directory
+            ftp.cwd(remote_path)
+            
+            # Get directory listing with details
+            items = []
+            ftp.retrlines('LIST', items.append)
+            
+            for item in items:
+                # Parse LIST output (Unix-style: drwxr-xr-x or -rw-r--r--)
+                parts = item.split(None, 8)
+                if len(parts) < 9:
+                    continue
+                
+                permissions = parts[0]
+                name = parts[8]
+                
+                # Skip . and .. directories
+                if name in ['.', '..']:
+                    continue
+                
+                # Check if it's a directory (starts with 'd')
+                if permissions.startswith('d'):
+                    # It's a directory - recurse into it
+                    new_local_path = local_path / name
+                    new_local_path.mkdir(parents=True, exist_ok=True)
+                    
+                    # Recursively sync subdirectory
+                    synced_count += self._sync_directory_recursive(
+                        ftp, 
+                        f"{remote_path}/{name}", 
+                        new_local_path
+                    )
+                    
+                    # Change back to parent directory
+                    ftp.cwd(remote_path)
+                else:
+                    # It's a file - download it
+                    try:
+                        local_file = local_path / name
+                        temp_file = local_path / f".{name}.tmp"
+                        
+                        # Download to temp file first
+                        with open(temp_file, 'wb') as f:
+                            ftp.retrbinary(f'RETR {name}', f.write)
+                        
+                        # Check if file changed
+                        if local_file.exists():
+                            old_hash = self.get_file_hash(local_file)
+                            new_hash = self.get_file_hash(temp_file)
+                            
+                            if old_hash == new_hash:
+                                # File unchanged, remove temp
+                                temp_file.unlink()
+                                continue
+                        
+                        # Move temp file to actual location
+                        temp_file.replace(local_file)
+                        synced_count += 1
+                        SynKConfig.log(f"Synced: {name} to {local_path}")
+                        
+                    except Exception as e:
+                        SynKConfig.log(f"Error syncing file {name}: {e}")
+                        if temp_file.exists():
+                            temp_file.unlink()
+            
+            return synced_count
+            
+        except Exception as e:
+            SynKConfig.log(f"Error in _sync_directory_recursive for {remote_path}: {e}")
+            return synced_count
     
     def sync_all_tasks(self):
         """Sync all configured tasks"""
