@@ -4,7 +4,7 @@ SynK - Intelligent FTP Agent for RGIPT (Linux Port)
 Automatically syncs course materials from RGIPT Intranet FTP
 
 Original SynK: Anish Kalra (24MC3006)
-Linux Port: Ujjwal Nayan (RGIPT 2024 Batch)
+Linux Port: Ujjwal Nayan (24EC3041)
 """
 
 import gi
