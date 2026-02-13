@@ -152,6 +152,9 @@ class FTPSyncEngine:
             # Change to the remote directory
             ftp.cwd(remote_path)
             
+            # Get current working directory for reference
+            current_dir = ftp.pwd()
+            
             # Get directory listing with details
             items = []
             ftp.retrlines('LIST', items.append)
@@ -175,15 +178,17 @@ class FTPSyncEngine:
                     new_local_path = local_path / name
                     new_local_path.mkdir(parents=True, exist_ok=True)
                     
-                    # Recursively sync subdirectory
+                    SynKConfig.log(f"Entering directory: {name}")
+                    
+                    # Recursively sync subdirectory (just use name, not full path)
                     synced_count += self._sync_directory_recursive(
                         ftp, 
-                        f"{remote_path}/{name}", 
+                        name,  # Just the folder name, we're already in parent
                         new_local_path
                     )
                     
-                    # Change back to parent directory
-                    ftp.cwd(remote_path)
+                    # Change back to current directory
+                    ftp.cwd(current_dir)
                 else:
                     # It's a file - download it
                     try:
