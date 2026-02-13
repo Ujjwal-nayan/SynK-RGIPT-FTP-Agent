@@ -2,7 +2,7 @@
 
 # SynK - RGIPT FTP Agent Uninstaller for Linux
 # Original SynK: Anish Kalra (24MC3006)
-# Linux Port: Ujjwal Nayan
+# Linux Port: Ujjwal Nayan (24EC3041)
 
 echo "╔═══════════════════════════════════════════════════════════╗"
 echo "║           SynK Uninstallation Script                     ║"
