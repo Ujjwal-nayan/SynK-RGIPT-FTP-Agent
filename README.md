@@ -5,10 +5,11 @@
 ### The "Set it and Forget it" Course Material Sync for RGIPTians
 
 [![Downloads](https://img.shields.io/github/downloads/Anishk362/SynK-RGIPT-FTP-Agent/total?style=for-the-badge&color=2ea44f)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)
+
 [![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/releases/latest)
 [![Windows](https://img.shields.io/badge/Platform-Windows-0078D6?style=flat-square&logo=windows&logoColor=white)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/blob/main/README_Windows.txt)
 [![macOS](https://img.shields.io/badge/Platform-macOS-000000?style=flat-square&logo=apple&logoColor=white)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/blob/main/README_Mac.txt)
-[![Linux](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)](https://github.com/Ujjwal-nayan/SynK-RGIPT-FTP-Agent)
+[![Linux](https://img.shields.io/badge/Platform-Linux-FCC624?style=flat-square&logo=linux&logoColor=black)](linux/README.txt)
 [![Status](https://img.shields.io/badge/Status-Stable-success?style=flat-square)](https://github.com/Anishk362/SynK-RGIPT-FTP-Agent/actions)
 
 </div>
